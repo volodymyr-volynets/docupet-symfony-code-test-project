@@ -1,3 +1,23 @@
+
+git clone https://github.com/volodymyr-volynets/docupet-symfony-code-test-project.git
+
+composer install
+
+php bin/console make:migration
+
+npm install
+
+npm run dev
+
+php bin/console tailwind:build
+
+symfony server:start
+
+Navigate to http://127.0.0.1:8000/pet
+
+
+#---Other-Commands-----------------------------------------------------------------------------//
+
 ## install framework
 Install with brew:
 brew install symfony-cli/tap/symfony-cli
