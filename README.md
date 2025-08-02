@@ -4,6 +4,7 @@ git clone https://github.com/volodymyr-volynets/docupet-symfony-code-test-projec
 composer install
 
 php bin/console make:migration
+php bin/console doctrine:migrations:migrate
 
 npm install
 
