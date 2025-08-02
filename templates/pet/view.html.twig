@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PetController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper {
+        margin: 1em auto;
+        max-width: 800px;
+        width: 95%;
+        font: 18px/1.5 sans-serif;
+        background: #fff;
+        border: 1px solid black;
+    }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper h1 { font-size: 2em; }
+    .example-wrapper a { color: blue; }
+    body {
+        background: #ddd !important;
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Pet Summary:</h1>
+
+    <table width="100%">
+        <tr><th width="25%">ID:</th><td width="75%">{{ pet.id }}</td></tr>
+        <tr><th>Name:</th><td>{{ pet.name }}</td></tr>
+        <tr><th>Type:</th><td>{{ pet.type }}</td></tr>
+        <tr><th>Breed:</th><td>{{ pet.breed }}</td></tr>
+        <tr><th>Birth:</th><td>{{ pet.date_of_birth }}</td></tr>
+        <tr><th>Sex:</th><td>{{ pet.sex }}</td></tr>
+        <tr><th>Is Dangerous:</th><td>{{ pet.is_dangerous }}</td></tr>
+        <tr><th>Age:</th><td>{{ pet.age }}</td></tr>
+    </table>
+
+    <a href="/pet">New Pet</a>
+</div>
+{% endblock %}

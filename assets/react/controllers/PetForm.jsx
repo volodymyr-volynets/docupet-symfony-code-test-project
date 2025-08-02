@@ -45,6 +45,10 @@ const A = styled.a`
     cursor: pointer;
 `;
 
+const PErrors = styled.p`
+    color: red;
+`;
+
 export default function (props) {
     const [type, setType] = useState(null);
     const [search, setSearch] = useState(null);
@@ -106,7 +110,7 @@ export default function (props) {
                             <label className="text-sm">
                                 <TextSpan>What breed are they?</TextSpan>
                                 <div>
-                                    <input ref={nameRef} id="name" type="text" name="name" className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Cant find it?" value={search ? search : breed} onKeyUp={() => setBreed(null)} onChange={(event) => setSearch(event.target.value)} />
+                                    <input ref={nameRef} id="breed" type="text" name="breed" className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Cant find it?" value={search ? search : breed} onKeyUp={() => setBreed(null)} onChange={(event) => setSearch(event.target.value)} />
                                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                                         <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2"/>
@@ -119,6 +123,14 @@ export default function (props) {
                                                     <BreedPresets breeds={filteredBreeds()} setBreed={setBreed} />
                                                 </BreedPresetsDiv>
                                             </BreedPresetsHolder>
+                                        </>
+                                    )}
+                                    {breed && breed.indexOf('(dangerous)') && (
+                                        <>
+                                            <br/>
+                                            <PErrors>
+                                                {breed.replace('(dangerous)', '') + ' is considered dangerous.'}
+                                            </PErrors>
                                         </>
                                     )}
                                 </div>
@@ -168,6 +180,7 @@ export default function (props) {
                                 <span className={"px-3 py-2 text-sm " + (gender == 'Female' ? 'bg-cyan-500 text-white outline-2 outline-offset-2 outline-cyan-500' : 'bg-white-500 text-cyan outline-2 outline-cyan-500')} onClick={() => setGender('Female')}>Female</span>
                                 {' '}
                                 <span className={"px-3 py-2 text-sm " + (gender == 'Male' ? 'bg-cyan-500 text-white outline-2 outline-offset-2 outline-cyan-500' : 'bg-white-500 text-cyan outline-2 outline-cyan-500')} onClick={() => setGender('Male')}>Male</span>
+                                <input id="gender" type="hidden" name="gender" value={gender} />
                             </label>
                             <br/>
                             <label className="text-sm">
@@ -219,7 +232,7 @@ export default function (props) {
                                                 <td width="33%">
                                                     <label className="text-sm">
                                                         <TextSpanSmall>Month</TextSpanSmall>
-                                                        <select onChange={(event) => {setBirthMonth(event.target.value);}} required="required" id="approx_age" name="approx_age" required="required" className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" value={birthMonth}>
+                                                        <select onChange={(event) => {setBirthMonth(event.target.value);}} required="required" className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" value={birthMonth}>
                                                             <option value="">Select</option>
                                                             <option value="1">January</option>
                                                             <option value="2">February</option>
@@ -235,6 +248,7 @@ export default function (props) {
                                                             <option value="12">December</option>
                                                         </select>
                                                     </label>
+                                                    <input id="birth_month" type="hidden" name="birth_month" value={birthMonth} />
                                                 </td>
                                                 <td width="33%">
                                                     <label className="text-sm">
@@ -261,6 +275,7 @@ export default function (props) {
                                     name="submit_button"
                                     className={"rounded-md bg-cyan-500 px-3 py-2 text-sm text-white shadow-xs hover:bg-cyan-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-500 " + (isDisabled() ? 'opacity-50 cursor-not-allowed' : '')}
                                     disabled={isDisabled()}
+                                    value="1"
                                 >Continue</button>
                             </div>
                         </div>
