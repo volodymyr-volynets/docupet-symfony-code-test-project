@@ -15,12 +15,18 @@ final class PetController extends AbstractController
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         if ($request->request->get('submit_button')) {
+            $mixture = $request->request->get('mixture');
+            $breed = $request->request->get('breed');
+            if ($mixture) {
+                $breed.=  ' ' . $mixture;
+            }
+            $breed = trim($breed);
             $pet = new Pets();
             $pet->setType($request->request->get('type'));
             $pet->setName($request->request->get('name'));
-            $pet->setBreed($request->request->get('breed'));
+            $pet->setBreed($breed);
             $pet->setSex($request->request->get('gender'));
-            $pet->setIsDangerous(strpos($request->request->get('breed'), '(dangerous)') !== false ? 1 : 0);
+            $pet->setIsDangerous(strpos($breed, '(dangerous)') !== false ? 1 : 0);
             $pet->setApproximateAge($request->request->get('approx_age') ?? null);
             // birth_month, birth_day, birth_year
             if ($request->request->get('birth_month')) {
