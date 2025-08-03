@@ -13,4 +13,12 @@ final class PetControllerTest extends WebTestCase
 
         self::assertResponseIsSuccessful();
     }
+
+    public function testPost(): void
+    {
+        $client = static::createClient();
+        $client->request('POST', '/pet');
+
+        self::assertResponseIsSuccessful();
+    }
 }

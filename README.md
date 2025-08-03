@@ -17,8 +17,13 @@ symfony server:start
 
 Navigate to http://127.0.0.1:8000/pet
 
+# PHPUnit tests
 
-#---Other-Commands-----------------------------------------------------------------------------//
+symfony console doctrine:schema:update --env=test --force
+
+php bin/phpunit
+
+# ---Other-Commands-----------------------------------------------------------------------------//
 
 ## install framework
 Install with brew:
