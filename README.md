@@ -1,3 +1,4 @@
+# Bring application to live:
 
 git clone https://github.com/volodymyr-volynets/docupet-symfony-code-test-project.git
 
