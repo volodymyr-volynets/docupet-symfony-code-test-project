@@ -23,6 +23,9 @@ symfony console doctrine:schema:update --env=test --force
 
 php bin/phpunit
 
+# Jest tests
+npm test
+
 # ---Other-Commands-----------------------------------------------------------------------------//
 
 ## install framework

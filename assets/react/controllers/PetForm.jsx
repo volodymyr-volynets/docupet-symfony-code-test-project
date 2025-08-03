@@ -97,7 +97,7 @@ export default function (props) {
                             <p className="text-red-600">{props.errors}</p>
                             <label className="text-sm">
                                 <TextSpan>Pet Type</TextSpan> <span className="text-red-600">*</span>:
-                                <select onChange={(event) => {setType(event.target.value); setSearch(null)}} id="type" name="type" required="required" className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                                <select onChange={(event) => {setType(event.target.value); setSearch(null)}} id="type" name="type" required="required" className="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" data-testid="pet-type">
                                     <option value="">Please Choose</option>
                                     <option value="Dog">Dog</option>
                                     <option value="Cat">Cat</option>
@@ -105,7 +105,7 @@ export default function (props) {
                             </label>
                             <label className="text-sm">
                                 <TextSpan>Whats your {type} name?</TextSpan> <span className="text-red-600">*</span>
-                                <input id="name" type="text" name="name" required="required" className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Monte" />
+                                <input id="name" type="text" name="name" required="required" className="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6" placeholder="Monte" data-testid="pet-name" />
                             </label>
                             <label className="text-sm">
                                 <TextSpan>What breed are they?</TextSpan>
